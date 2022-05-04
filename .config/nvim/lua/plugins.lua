@@ -37,6 +37,7 @@ return require('packer').startup(function()
       })
     end,
   }
+  use { 'machakann/vim-sandwich' }
   
   -- Font
   use "kyazdani42/nvim-web-devicons"
@@ -138,6 +139,33 @@ return require('packer').startup(function()
         show_current_context = true,
         show_current_context_start = true,
       })
+    end,
+  }
+
+  use {
+    'stevearc/dressing.nvim',
+    config = function()
+      require('dressing').setup({})
+    end,
+  }
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup({})
+    end
+  }
+  use {
+    'mrjones2014/legendary.nvim',
+    requires = {
+      "folke/which-key.nvim",
+      'stevearc/dressing.nvim',
+    },
+    config = function()
+      local opts = { noremap=true, silent=true }
+      vim.api.nvim_set_keymap('n', '<leader>ll', '<cmd>Legendary<cr>', opts)
+      vim.api.nvim_set_keymap('n', '<leader>lk', '<cmd>Legendary keymaps<cr>', opts)
+      vim.api.nvim_set_keymap('n', '<leader>lc', '<cmd>Legendary commands<cr>', opts)
+      vim.api.nvim_set_keymap('n', '<leader>la', '<cmd>Legendary autocmds<cr>', opts)
     end,
   }
 
@@ -278,6 +306,8 @@ return require('packer').startup(function()
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+        vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]])
       end
 
       require("nvim-lsp-installer").on_server_ready(function(server)
