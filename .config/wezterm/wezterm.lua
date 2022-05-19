@@ -26,14 +26,14 @@ end)
 
 return {
   use_ime = true,
-  font = wezterm.font("Ricty", {weight="Regular"}),
-  font_size = 15.5,
+  font = wezterm.font("HackGenNerd", {weight="Regular"}),
+  font_size = 15.0,
   freetype_load_flags = "NO_AUTOHINT",
   line_height = 1.1,
   color_scheme = "nord",
   hide_tab_bar_if_only_one_tab = true,
   window_frame = {
-    font = wezterm.font({family="Ricty", weight="Bold"}),
+    font = wezterm.font({family="HackGenNerd", weight="Bold"}),
     font_size = 15.0,
     active_titlebar_bg = "#434C5E",
     inactive_titlebar_bg = "#434C5E",
