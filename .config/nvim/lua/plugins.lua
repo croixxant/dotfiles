@@ -70,7 +70,16 @@ return require('packer').startup(function()
     },
     config = function()
       -- Unless you are still migrating, remove the deprecated commands from v1.x
-      require("neo-tree").setup({})
+      require("neo-tree").setup({
+        filesystem = {
+          filtered_items = {
+            hide_dotfiles = false,
+            hide_by_pattern = {
+              '.git'
+            }
+          }
+        }
+      })
       local opts = { noremap=true, silent=true }
       vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>Neotree reveal<cr>", opts)
       vim.api.nvim_set_keymap("n", "<leader>tw", "<cmd>Neotree close<cr>", opts)
@@ -262,7 +271,15 @@ return require('packer').startup(function()
       vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
       vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
 
-      require('telescope').load_extension('fzf')
+      local telescope = require('telescope')
+      telescope.setup({
+        pickers = {
+          find_files = {
+            find_command = {'rg', '--files', '--hidden', '--glob', '!.git'}
+          }
+        }
+      })
+      telescope.load_extension('fzf')
     end,
   }
 
