@@ -42,8 +42,6 @@ alias tk='tmux kill-session'
 
 autoload -U compinit && compinit    # load and execute compinit
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 if command -v starship > /dev/null 2>&1; then
     eval "$(starship init zsh)"
 fi
