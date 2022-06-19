@@ -1,0 +1,25 @@
+[user]
+	name = croixxant
+	email = croixxxant@gmail.com
+[init]
+  defaultBranch = main
+[alias]
+  a = add
+  b = branch
+  c = commit
+  d = diff
+  pl = pull
+  ps = push
+  co = checkout
+  cp = cherry-pick
+  rs = reset
+  rb = rebase
+  rv = revert
+  s = status
+  l = log
+[core]
+	editor = nvim
+[color]
+	diff = auto
+	status = auto
+	branch = auto
