@@ -95,14 +95,6 @@ return require('packer').startup(function()
   }
 
   use {
-    "folke/todo-comments.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("todo-comments").setup{}
-    end,
-  }
-
-  use {
     "folke/trouble.nvim",
     requires = { { 'kyazdani42/nvim-web-devicons', opt = true } },
     config = function()
@@ -170,6 +162,8 @@ return require('packer').startup(function()
       'stevearc/dressing.nvim',
     },
     config = function()
+      require('legendary').setup({})
+
       local opts = { noremap=true, silent=true }
       vim.api.nvim_set_keymap('n', '<leader>ll', '<cmd>Legendary<cr>', opts)
       vim.api.nvim_set_keymap('n', '<leader>lk', '<cmd>Legendary keymaps<cr>', opts)
@@ -208,7 +202,7 @@ return require('packer').startup(function()
       vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>Neogit<cr>', opts)
       vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>DiffviewOpen<cr>', opts)
       vim.api.nvim_set_keymap('n', '<leader>gw', '<cmd>DiffviewClose<cr>', opts)
-  end,
+    end,
   }
   use {
     'lewis6991/gitsigns.nvim',
@@ -234,7 +228,7 @@ return require('packer').startup(function()
         current_line_blame_opts = {
           virt_text = true,
           virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-          delay = 1000,
+          delay = 500,
           ignore_whitespace = false,
         },
         current_line_blame_formatter = '  <author>, <author_time:%Y-%m-%d> - <summary>',
