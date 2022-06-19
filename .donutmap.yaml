@@ -1,9 +1,0 @@
-dest_dir: "$HOME" # destination directory. you can use environment variables
-excludes:
-  - "LICENSE"
-  - "README.md"
-maps:
-  - src: ".config/starship.toml" # relative path from source directory
-    dest: ".config/starship.toml" # relative path from destination directory
-  - src: ".config/tmux/tmux.conf" # directory can also be specified to src
-    dest: "$HOME/.config/tmux/tmux.conf" # absolute paths can also be specified to dest
